@@ -9,7 +9,7 @@ terraform {
     organization = "your-organization"
 
     workspaces {
-      name = "your-workspace-${var.app_environment}-ec2-${var.app_name}"
+      name = "change_me" #example: "your-organization-elasticache-new-service-homolog"
     }
   }
 
@@ -24,5 +24,6 @@ terraform {
 provider "aws" {
   region                  = var.aws_region
   shared_credentials_file = "~/.aws/credentials"
-  profile                 = "default"
+  profile                 = "personal"
 }
+

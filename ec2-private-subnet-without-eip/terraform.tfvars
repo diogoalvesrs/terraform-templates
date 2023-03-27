@@ -1,6 +1,6 @@
 # Application Definition 
 app_name        = "new-service" # Do NOT enter any spaces
-app_environment = "dev"      # Dev, Test, Staging, Prod, etc
+app_environment = "Homolog"      # Dev, Test, Staging, Prod, etc
 
 # Network
 #vpc_cidr           = "10.11.0.0/16"

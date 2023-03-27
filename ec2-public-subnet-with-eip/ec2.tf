@@ -9,7 +9,7 @@ resource "aws_eip" "ec2_eip" {
   tags = {
     Name        = "${lower(var.app_name)}-${lower(var.app_environment)}-eip"
     Environment = var.app_environment
-    Billing     = var.billing_tag
+    Billing     = var.billing_organization
   }
 }
 
@@ -34,11 +34,13 @@ resource "aws_instance" "ec2_instance" {
   }
 
   tags = {
-    Name           = "[Organization] ${(var.app_name)} ${var.app_environment}"
+    Name           = "[organization] ${(var.app_name)} ${var.app_environment}"
     Environment    = var.app_environment
-    Billing        = var.billing_tag
+    Billing        = var.billing_organization
     Managed-by     = "Terraform"
     Gerenciado-por = "Terraform"
+    #Liga           = "1" ### ATIVAR CASO NECESSÁRIO ###
+    #Desliga        = "1" ### ATIVAR CASO NECESSÁRIO ###
   }
 }
 
@@ -62,12 +64,19 @@ resource "aws_security_group" "ec2_sg" {
   }
 
   ingress {
-    description = "SSH Connections"
-    from_port   = 22
-    to_port     = 22
+    description = "Zabbix Server"
+    from_port   = 10050
+    to_port     = 10051
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+    cidr_blocks = ["44.194.43.84/32"]
+  }
+
+  ingress {
+    description = "Zabbix Server"
+    from_port   = 10050
+    to_port     = 10051
+    protocol    = "tcp"
+    cidr_blocks = ["172.30.1.235/32"]
   }
 
   egress {

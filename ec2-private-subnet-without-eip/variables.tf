@@ -11,19 +11,19 @@ variable "linux_instance_type" {
 variable "linux_ami" {
   type        = string
   description = "AMI"
-  default     = "ami-0970638a979a1415a" #Ubuntu 20.04
+  default     = "ami-0970638a979a1415a"
 }
 
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
-  default     = "vpc-id"
+  default     = "vpc-0a45fd07756fd9884"
 }
 
 variable "subnet_id" {
   type        = string
   description = "Subnet ID"
-  default     = "subnet-id"
+  default     = "subnet-002dc84937676"
 }
 
 variable "key_name" {
@@ -49,14 +49,14 @@ variable "linux_root_volume_type" {
   default     = "gp3"
 }
 
-variable "billing_tag" {
+variable "billing_organization" {
   type        = string
-  description = "Tag usada para controlar os custos"
-  default     = "your-tag"
+  description = "Tag used to control costs"
+  default     = "homolog"
 }
 
 variable "role_ec2_basico_gerenciamento" {
   type        = string
   description = "Role com permissoes necessarias para que a EC2 possa gravar logs no Cloudwatch possa ser gerenciada via SSM entre outros"
-  default     = "EC2-basico-gerenciamento"
+  default     = "your-role"
 }
