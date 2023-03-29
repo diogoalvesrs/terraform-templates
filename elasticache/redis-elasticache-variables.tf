@@ -1,6 +1,6 @@
 variable "app_environment" {
   type        = string
-  default     = "change_me" #example: "homolog" or "producao"
+  default     = "change_me" #example: "homolog" or "production"
   description = "APP Environment"
 }
 

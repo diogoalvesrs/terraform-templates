@@ -24,7 +24,7 @@ resource "aws_instance" "ec2_instance" {
   }
 
   tags = {
-    Name           = "[organization] ${(var.app_name)} ${var.app_environment}"
+    Name           = "[organization] ${(var.app_name)} ${(var.app_environment)}"
     Environment    = var.app_environment
     Billing        = var.billing_organization
     Managed-by     = "Terraform"
@@ -36,13 +36,13 @@ resource "aws_instance" "ec2_instance" {
 
 # Create security group for EC2
 resource "aws_security_group" "ec2_sg" {
-  name        = "${(var.app_name)}-${var.app_environment}-sg"
-  description = "Permite as comunicacoes com a EC2 ${(var.app_name)} ${var.app_environment}"
+  name        = "${(var.app_name)}-${(var.app_environment)}-sg"
+  description = "Permite as comunicacoes com a EC2 ${(var.app_name)} ${(var.app_environment)}"
   vpc_id      = var.vpc_id
 
   tags = {
     Name           = "${(var.app_name)}-sg"
-    Service        = "${(var.app_name)} ${var.app_environment}"
+    Service        = "${(var.app_name)} ${(var.app_environment)}"
     Managed-by     = "Terraform"
     Gerenciado-por = "Terraform"
   }
